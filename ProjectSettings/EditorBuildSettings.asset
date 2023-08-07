@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Dungeons & Droids/Scenes/IntroMenu.unity
+    guid: 2844e84d3de72e74480f50d7e6a44b84
+  - enabled: 1
+    path: Assets/Dungeons & Droids/Scenes/MainScene.unity
+    guid: 8fdb66b3d5f94c2488dec767fb72a89e
+  - enabled: 1
+    path: Assets/Dungeons & Droids/Scenes/LoseScene.unity
+    guid: d79ba4fd3548e8f4586e73acf344655b
+  - enabled: 1
+    path: Assets/Dungeons & Droids/Scenes/WinScene.unity
+    guid: 7e3682e1e3db96e418e47b1eda0b2d66
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: b54525bda8b1e404c98acfce04c9148c, type: 2}
