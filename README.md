@@ -15,7 +15,7 @@ Day 2:
 
 Day 3:
 - ProBuilder and ProGrids, level design
-- FPS Movement (W,A,S,D), Jump, Run with "Shift" key, Crouch with "Left Control" key.
+- FPS Movement (W,A,S,D), Jump, Run with "Shift" key, Crouch with "Left Control" key
 - AIM with mouse
 
 Day 4:
@@ -33,7 +33,7 @@ Day 5:
 - Polishing and adjusting parameters, cleanup
 
 Day 6:
--Build and Publish on [Unity Play](https://play.unity.com/mg/other/builds-yu-8) and GitHub
+- Build and Publish on [Unity Play](https://play.unity.com/mg/other/builds-yu-8) and GitHub
 
 Used:
 - Animations for models, gun shooting
