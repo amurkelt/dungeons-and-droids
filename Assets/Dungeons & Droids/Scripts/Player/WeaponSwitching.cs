@@ -22,7 +22,15 @@ public class WeaponSwitching : MonoBehaviour
     void Update()
     {
         Gun gun = FindObjectOfType<Gun>();
-        ammoInfoText.text = gun.currentAmmo + " / " + gun.magazineAmmo;
+
+        if (gun.currentAmmo <= 0)
+        {
+            ammoInfoText.text = "0 / " + gun.magazineAmmo;
+        }
+        else
+        {
+            ammoInfoText.text = gun.currentAmmo + " / " + gun.magazineAmmo;
+        }
 
         //float scrollValue = switching.ReadValue<Vector2>().y;
 

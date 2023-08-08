@@ -63,7 +63,7 @@ public class Gun : MonoBehaviour
             Fire();
         }
 
-        if (currentAmmo == 0 && magazineAmmo > 0 && !isReloading)
+        if (currentAmmo <= 0 && magazineAmmo > 0 && !isReloading)
         {
             StartCoroutine(Reload());
         }
@@ -115,21 +115,21 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
-        isReloading = true;
-        AudioManager.instance.Play("Reload");
-        animator.SetBool("isReloading", true);
-        yield return new WaitForSeconds(reloadTime);
-        animator.SetBool("isReloading", false);
-        if (magazineAmmo >= maxAmmo)
-        {
-            currentAmmo = maxAmmo;
-            magazineAmmo -= maxAmmo;
-        }
-        else
-        {
-            currentAmmo = magazineAmmo;
-            magazineAmmo = 0;
-        }
-        isReloading = false;
+            isReloading = true;
+            AudioManager.instance.Play("Reload");
+            animator.SetBool("isReloading", true);
+            yield return new WaitForSeconds(reloadTime);
+            animator.SetBool("isReloading", false);
+            if (magazineAmmo >= maxAmmo)
+            {
+                currentAmmo = maxAmmo;
+                magazineAmmo -= maxAmmo;
+            }
+            else
+            {
+                currentAmmo = magazineAmmo;
+                magazineAmmo = 0;
+            }
+            isReloading = false;
     }
 }
