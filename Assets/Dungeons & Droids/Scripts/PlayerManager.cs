@@ -68,7 +68,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public IEnumerator SelectedWeapon(float weaponIndex)
+    public IEnumerator SelectedWeapon(int weaponIndex)
     {
         if (weaponIndex == 1)
         {

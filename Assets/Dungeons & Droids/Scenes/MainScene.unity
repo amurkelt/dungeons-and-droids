@@ -4578,8 +4578,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1204562709}
-  - {fileID: 2060044143}
   - {fileID: 1807732964}
+  - {fileID: 2060044143}
   m_Father: {fileID: 1136385243}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4595,6 +4595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1289e89b41951db43864d97ba725bdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSwitching: 0
   selectedWeapon: 0
   ammoInfoText: {fileID: 1927792156}
 --- !u!95 &318835379
@@ -22563,7 +22564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: cc34ae6a7e465584aa9e4dcc48852048, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: cc34ae6a7e465584aa9e4dcc48852048, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26493,7 +26494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 8233791bab55837408982f359042ae45, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 8233791bab55837408982f359042ae45, type: 3}
       propertyPath: m_LocalPosition.x

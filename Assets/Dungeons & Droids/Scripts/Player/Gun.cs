@@ -1,7 +1,6 @@
 using System.Collections;
-using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
@@ -68,7 +67,7 @@ public class Gun : MonoBehaviour
             StartCoroutine(Reload());
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && currentAmmo < maxAmmo)
         {
             StartCoroutine(Reload());
         }
@@ -117,9 +116,13 @@ public class Gun : MonoBehaviour
     {
             isReloading = true;
             AudioManager.instance.Play("Reload");
+
             animator.SetBool("isReloading", true);
-            yield return new WaitForSeconds(reloadTime);
+
+            yield return new WaitForSeconds(reloadTime - .25f);
             animator.SetBool("isReloading", false);
+            yield return new WaitForSeconds(.25f);
+
             if (magazineAmmo >= maxAmmo)
             {
                 currentAmmo = maxAmmo;

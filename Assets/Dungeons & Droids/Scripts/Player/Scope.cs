@@ -19,6 +19,13 @@ public class Scope : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        WeaponSwitching weaponSwitching = FindObjectOfType<WeaponSwitching>();
+        if (weaponSwitching.isSwitching == true)
+        {
+            OnUnscoped();
+            weaponSwitching.isSwitching = false;
+        }
+
         Gun gun = FindObjectOfType<Gun>();
         if (gun.isReloading || gun.currentAmmo == 0)
         {
@@ -26,6 +33,18 @@ public class Scope : MonoBehaviour
         }
         else
         {
+            // Scope on Button Down and Up
+            //if (Input.GetMouseButtonDown(1))
+            //{
+            //    StartCoroutine(OnScoped());
+            //}
+
+            //else if (Input.GetMouseButtonUp(1))
+            //{
+            //    OnUnscoped();
+            //}
+
+            // Scope is a toggle as in CS:GO
             if (scope.triggered)
             {
                 isScoped = !isScoped;
@@ -40,7 +59,6 @@ public class Scope : MonoBehaviour
                 }
             }
         }
-
     }
     IEnumerator OnScoped()
     {

@@ -5,15 +5,14 @@ using TMPro;
 public class WeaponSwitching : MonoBehaviour
 {
     InputAction switching;
+    public bool isSwitching;
     public int selectedWeapon = 0;
     public TextMeshProUGUI ammoInfoText;
 
     void Start()
     {
-        // First option of Weapon switching by mouse scroll
-
-        //switching = new InputAction("Scroll", binding: "<Mouse>/scroll");
-        //switching.Enable();
+        switching = new InputAction("Scroll", binding: "<Mouse>/scroll");
+        switching.Enable();
 
         SelectWeapon();
     }
@@ -32,43 +31,60 @@ public class WeaponSwitching : MonoBehaviour
             ammoInfoText.text = gun.currentAmmo + " / " + gun.magazineAmmo;
         }
 
-        //float scrollValue = switching.ReadValue<Vector2>().y;
+        // Switching by Mouse Scroll
+        float scrollValue = switching.ReadValue<Vector2>().y;
 
         int previousSelected = selectedWeapon;
 
-        //if (scrollValue > 0)
-        //{
-        //    selectedWeapon++;
-        //    if (selectedWeapon == transform.childCount)
-        //        selectedWeapon = 0;
-        //}
-        //else if (scrollValue < 0)
-        //{
-        //    selectedWeapon--;
-        //    if (selectedWeapon == -1)
-        //        selectedWeapon = transform.childCount - 1;
-        //}
+        if (scrollValue > 0)
+        {
+            selectedWeapon++;
+            isSwitching = true;
+            if (selectedWeapon == transform.childCount)
+                selectedWeapon = 0;
+        }
+        else if (scrollValue < 0)
+        {
+            selectedWeapon--;
+            isSwitching = true;
+            if (selectedWeapon == -1)
+                selectedWeapon = transform.childCount - 1;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             selectedWeapon = 0;
-            StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(1));
+            isSwitching = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            selectedWeapon = 2;
-            StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(2));
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >=2)
         {
             selectedWeapon = 1;
-            StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(3));
+            isSwitching = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
+        {
+            selectedWeapon = 2;
+            isSwitching = true;
         }
 
         if (previousSelected != selectedWeapon)
             SelectWeapon();
+
+        // Show WeaponIcon in GUI
+        switch (selectedWeapon)
+        {
+            case 0:
+                StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(1));
+                break;
+            case 1:
+                StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(2));
+                break;
+            case 2:
+                StartCoroutine(FindObjectOfType<PlayerManager>().SelectedWeapon(3));
+                break;
+        }
 
     }
 
