@@ -44,6 +44,13 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        WeaponSwitching weaponSwitching = FindObjectOfType<WeaponSwitching>();
+        if (weaponSwitching.isSwitching == true)
+        {
+            StartCoroutine(Wait());
+            return;
+        }
+
         if (currentAmmo == 0 && magazineAmmo == 0)
         {
             animator.SetBool("isShooting", false);
@@ -134,5 +141,12 @@ public class Gun : MonoBehaviour
                 magazineAmmo = 0;
             }
             isReloading = false;
+    }
+
+    IEnumerator Wait()
+    {
+        WeaponSwitching weaponSwitching = FindObjectOfType<WeaponSwitching>();
+        yield return new WaitForSeconds(0.25f);
+        weaponSwitching.isSwitching = false;
     }
 }
