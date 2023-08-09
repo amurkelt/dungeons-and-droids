@@ -1,21 +1,20 @@
-using JetBrains.Annotations;
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
     public int enemyHP = 100;
     public GameObject projectile;
-    public Transform projectilePoint;
+    public Transform spawnBulletPosition;
 
     public Animator animator;
 
+    PlayerMovement player;
     public void Shoot()
     {
-        Rigidbody rb = Instantiate(projectile, projectilePoint.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 30f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 7, ForceMode.Impulse);
+        player = GameObject.FindObjectOfType<PlayerMovement>();
+        Vector3 aimDir = (player.transform.position - spawnBulletPosition.position).normalized;
+        Instantiate(projectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        FindObjectOfType<AudioManager>().Play("Hoverbot_Attack");
     }
 
     public void TakeDamage(int damageAmount)

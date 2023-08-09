@@ -23,6 +23,7 @@ public class Scope : MonoBehaviour
         if (weaponSwitching.isSwitching == true)
         {
             OnUnscoped();
+            isScoped = false;
         }
 
         Gun gun = FindObjectOfType<Gun>();

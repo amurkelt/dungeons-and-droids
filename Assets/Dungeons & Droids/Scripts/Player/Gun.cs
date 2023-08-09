@@ -47,7 +47,7 @@ public class Gun : MonoBehaviour
         WeaponSwitching weaponSwitching = FindObjectOfType<WeaponSwitching>();
         if (weaponSwitching.isSwitching == true)
         {
-            StartCoroutine(Wait());
+            StartCoroutine(DelayAfterWeaponSwap());
             return;
         }
 
@@ -82,11 +82,19 @@ public class Gun : MonoBehaviour
 
     private void Fire()
     {
+        if (currentAmmo <= 0)
+        {
+            animator.SetBool("isShooting", false);
+            return;
+        }
+
         AudioManager.instance.Play("Shoot");
 
         muzzleFlash.Play();
 
         currentAmmo--;
+
+        // Hitscan method
         RaycastHit hit;
 
         if (Physics.Raycast(fpsCam.position + fpsCam.forward, fpsCam.forward, out hit, range))
@@ -143,7 +151,7 @@ public class Gun : MonoBehaviour
             isReloading = false;
     }
 
-    IEnumerator Wait()
+    IEnumerator DelayAfterWeaponSwap()
     {
         WeaponSwitching weaponSwitching = FindObjectOfType<WeaponSwitching>();
         yield return new WaitForSeconds(0.25f);
