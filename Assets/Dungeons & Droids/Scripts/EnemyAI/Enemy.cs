@@ -13,8 +13,11 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerMovement>();
         Vector3 aimDir = (player.transform.position - spawnBulletPosition.position).normalized;
-        Instantiate(projectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        GameObject bullet = Instantiate(projectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
         FindObjectOfType<AudioManager>().Play("Hoverbot_Attack");
+
+        // Destroy bullets after 0,4 seconds
+        Destroy(bullet, .4f);
     }
 
     public void TakeDamage(int damageAmount)

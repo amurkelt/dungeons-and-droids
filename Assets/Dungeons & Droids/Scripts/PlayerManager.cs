@@ -51,9 +51,8 @@ public class PlayerManager : MonoBehaviour
         if (playerHP <= 0)
             isGameOver = true;
 
+        StartCoroutine(FindObjectOfType<PlayerManager>().HideOverlay(1));
         yield return new WaitForSeconds(1);
-        bloodOverlay.SetActive(false);
-
     }
 
     public IEnumerator EnemyCount(int enemyDown)
@@ -91,5 +90,11 @@ public class PlayerManager : MonoBehaviour
             heavylIcon.SetActive(false);
             yield return new WaitForSeconds(.1f);
         }
+    }
+
+    public IEnumerator HideOverlay(int overlayIndex)
+    {
+        yield return new WaitForSeconds(1);
+        bloodOverlay.SetActive(false);
     }
 }

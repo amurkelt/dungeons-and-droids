@@ -33,7 +33,7 @@ Day 5:
 - Polishing and adjusting parameters, cleanup
 
 Day 6:
-- Build and Publish on [Unity Play](https://play.unity.com/mg/other/builds-yu-8) and GitHub
+- Build and Publish on Unity Play and GitHub
 
 Used:
 - Animations for models, gun shooting

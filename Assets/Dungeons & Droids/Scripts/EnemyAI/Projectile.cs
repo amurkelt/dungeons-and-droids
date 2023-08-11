@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
         foreach (Collider nearbyObject in colliders)
         {
-            if (nearbyObject.tag == "Player")
+            if (nearbyObject.CompareTag("Player"))
             {
                 StartCoroutine(FindObjectOfType<PlayerManager>().TakeDamage(damageAmount));
             }
